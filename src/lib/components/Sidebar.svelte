@@ -2,24 +2,20 @@
   import { page } from '$app/state'
   import { type Component } from 'svelte'
 
-  import {
-    Apps16,
-    ChevronDown16,
-    Heart16,
-    Home16,
-    Inbox16
-  } from 'svelte-octicons'
+  import HomeFill16 from '$lib/icons/HomeFill16.svelte'
+  import HeartFill16 from '$lib/icons/HeartFill16.svelte'
+  import Cache16 from '$lib/icons/Cache16.svelte'
+  import Apps16 from '$lib/icons/Apps16.svelte'
+  import ChevronDown16 from '$lib/icons/ChevronDown16.svelte'
+
+  import SidebarIcon from '$lib/components/SidebarIcon.svelte'
 
   type Link = { name: string; path: string; icon: Component | undefined }
 
   const global_links: Link[] = [
-    { name: 'Home', path: '/', icon: Home16 as any as Component },
-    {
-      name: 'Favorites',
-      path: '/favorites',
-      icon: Heart16 as any as Component
-    },
-    { name: 'Dashboard', path: '/dashboard', icon: Inbox16 as any as Component }
+    { name: 'Home', path: '/', icon: HomeFill16 },
+    { name: 'Favorites', path: '/favorites', icon: HeartFill16 },
+    { name: 'Dashboard', path: '/dashboard', icon: Cache16 }
   ]
 
   const temp_links: Link[] = [
@@ -43,7 +39,7 @@
     ]}
     {href}
     ><span class="sidebar__link__name"
-      >{#if Icon}<span class="sidebar__link__icon"><Icon /></span>{/if}
+      >{#if Icon}<SidebarIcon {Icon} />{/if}
       {name}</span
     ></a>
 {/snippet}
@@ -65,7 +61,7 @@
         class="sidebar__link--dropdown"
         onclick={() => (showLibraries = !showLibraries)}>
         <span class="sidebar__link__name"
-          ><span class="sidebar__link__icon"><Apps16 /></span> Libraries</span>
+          ><SidebarIcon Icon={Apps16} /> Libraries</span>
         <span
           class={[
             'sidebar__link__icon--dropdown',
@@ -123,7 +119,8 @@
       cursor: pointer;
       font-size: 1.5rem;
       padding: var(--pd-input);
-      border-radius: var(--rounding-md);
+      border: mixins.$border-faux;
+      border-radius: var(--rounding-sm);
       transition: color 0.2s ease;
 
       &__name {
@@ -165,6 +162,7 @@
 
       &--active {
         @extend %input-button;
+        border: mixins.$border-base;
 
         .sidebar__link__icon {
           fill: var(--clr-white);
@@ -172,7 +170,7 @@
       }
 
       &__icon {
-        fill: var(--clr-gray);
+        fill: var(--clr-white);
         transition: fill 0.2s ease;
 
         &--dropdown {

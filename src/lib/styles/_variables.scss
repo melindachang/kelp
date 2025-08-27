@@ -3,15 +3,18 @@
     Inter, system-ui, Segoe UI, Roboto, Helvetica, Arial, sans-serif,
     Apple Color Emoji, Segoe UI Emoji;
 
-  --bg-body: #07080a;
-  --bg-card: #0c0d0f;
-  --bg-input: #0c0d0f;
+  --bg-body: #010210;
+  --bg-card: #020617;
+  --bg-card-emph: #131727;
+  --bg-input: #020617;
+  --bg-input-active: #262b39;
 
   --width-search: 28rem;
   --width-widebar: 0;
 
   --clr-white: #ffffff;
-  --clr-gray: #9c9c9d;
+  --clr-gray: #49576b;
+  --clr-gray-light: #94a3b8;
   --clr-gray-minor: #6a6b6c;
   --clr-input-border: #2f3031;
 
@@ -20,4 +23,8 @@
   --pd-input: 1.2rem;
 
   --rounding-md: 12px;
+  --rounding-sm: 8px;
 }
+
+$border-base: 1px solid hsla(0deg, 0%, 100%, 0.16);
+$border-faux: 1px solid rgba(0, 0, 0, 0);
