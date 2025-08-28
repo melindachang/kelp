@@ -1,5 +1,5 @@
 {
-  "plugins": ["prettier-plugin-svelte"],
+  "plugins": ["prettier-plugin-svelte", "prettier-plugin-tailwindcss"],
   "tabWidth": 2,
   "singleQuote": true,
   "printWidth": 80,
@@ -11,5 +11,6 @@
   "bracketSameLine": true,
   "arrowParens": "avoid",
   "proseWrap": "preserve",
-  "endOfLine": "lf"
+  "endOfLine": "lf",
+  "tailwindStylesheet": "./src/app.css"
 }
