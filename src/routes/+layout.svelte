@@ -1,24 +1,25 @@
 <script lang="ts">
-  import '$lib/styles/main.scss'
+  import '../app.css'
 
-  import Sidebar from '$lib/components/Sidebar.svelte'
+  import AppSidebar from '$lib/components/app-sidebar.svelte'
+  import SiteHeader from '$lib/components/site-header.svelte'
+  import * as Sidebar from '$lib/components/ui/sidebar'
+
+  import { ModeWatcher } from 'mode-watcher'
 
   let { children } = $props()
 </script>
 
-<svelte:head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-</svelte:head>
+<ModeWatcher />
 
-<main class="container">
-  <div class="sidebar">
-    <Sidebar />
-  </div>
-  <div class="content">
-    {@render children()}
-  </div>
-</main>
-
-<style lang="scss">
-</style>
+<div class="[--header-height:calc(--spacing(14))]">
+  <Sidebar.Provider class="flex flex-col">
+    <SiteHeader />
+    <div class="flex flex-1">
+      <AppSidebar />
+      <Sidebar.Inset>
+        <main>{@render children()}</main>
+      </Sidebar.Inset>
+    </div>
+  </Sidebar.Provider>
+</div>
